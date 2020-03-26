@@ -50,7 +50,9 @@ This service uploads new packages to your storage and invokes Builder.
 Alternatives
 ------------
 
-If you would like to use cloud agnostic solution or prefer to use AWS instead of Google Cloud, check this repositories:
+If you would like to use cloud agnostic solution, check this repositories:
 - stevearc/pypicloud
 - private-pypi/private-pypi
+
+If you prefer to use AWS instead of Google Cloud, then check this repositories:
 - amureki/lapypi
