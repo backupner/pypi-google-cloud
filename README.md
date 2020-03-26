@@ -53,6 +53,3 @@ Alternatives
 If you would like to use cloud agnostic solution, check this repositories:
 - stevearc/pypicloud
 - private-pypi/private-pypi
-
-If you prefer to use AWS instead of Google Cloud, then check this repositories:
-- amureki/lapypi
