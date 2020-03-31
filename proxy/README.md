@@ -34,8 +34,8 @@ Run Cloud Build process:
 8. Select `Secret Manager Secret Accessor` role.
 9. Click to `ADD ANOTHER ROLE` button.
 10. Select `Storage Admin` role.
-9. Click to `CONTINUE` button.
-10. Click to `DONE` button.
+11. Click to `CONTINUE` button.
+12. Click to `DONE` button.
 
 #### Create Secret
 
