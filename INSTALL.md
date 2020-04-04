@@ -100,8 +100,6 @@ $ pwgen 172 1 | gcloud secrets create \
       --project='YOUR_PROJECT_ID'
 ```
 
-1. Open `Navigation menu`, select `Security` -> `Secret Manager`. Or just click to [this link](https://console.cloud.google.com/security/secret-manager).
-
 You just created new secret with first version of secret value. 
 
 ```
