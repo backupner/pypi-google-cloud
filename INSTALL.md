@@ -12,7 +12,7 @@ Preparation
 2. Open [Google Cloud Console](https://console.cloud.google.com/projectselector2/home/dashboard) and select or create new (recommended) Cloud project.
 3. Open `Navigation menu` and click to `Billing`. Make sure you have activated billing account for this project. ([Read official docs](https://cloud.google.com/billing/docs/how-to/modify-project) if you are stuck.)
 4. Create budget (optional but recommended). Open your billing account page and click to `Budgets & Alerts` menu button. After that click to `CREATE BUDGET` button and follow instructions.
-5. Install `Google Cloud SDK` tools, [read more official docs](https://cloud.google.com/sdk/install) (`Installation options` section).
+5. (Optional) Install `Google Cloud SDK` tools, [read more official docs](https://cloud.google.com/sdk/install) (`Installation options` section). You can use Web GUI and click to `Activate Cloud Shell` button in top right menu instead.
 
 
 Setup
