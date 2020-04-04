@@ -23,7 +23,7 @@ You can serve your static website directly from Cloud Storage bucket.
 Enable index pages for your static website bucket:
 
 ```
-$ gsutil web set -m index.html gs://packages-internal.example.com
+$ gsutil web set -m 'index.html' 'gs://packages-internal.example.com'
 ```
 
 Add `CNAME` record to your DNS zone. (Name `packages-internal`, target `c.storage.googleapis.com`).

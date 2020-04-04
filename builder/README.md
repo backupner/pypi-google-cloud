@@ -24,13 +24,13 @@ Implementation
   - Download any python package, for example, `functions-framework`. 
 
     ```
-    $ python3 -m pip download functions-framework
+    $ python3 -m pip download 'functions-framework'
     ```
   - Now we have, for example, `functions_framework-1.2.0-py3-none-any.whl` file, note this name.
   - Let's find out hash of this package.
 
     ```
-    $ python3 -m pip hash -a sha256 functions_framework-1.2.0-py3-none-any.whl
+    $ python3 -m pip hash -a 'sha256' 'functions_framework-1.2.0-py3-none-any.whl'
     ```
 
     ```
@@ -41,7 +41,7 @@ Implementation
   - Let's find out creation date now.
 
     ```
-    $ stat -r functions_framework-1.2.0-py3-none-any.whl
+    $ stat -r 'functions_framework-1.2.0-py3-none-any.whl'
     ```
 
     Note creation unix timestamp like `1585401713`.
@@ -59,10 +59,10 @@ Run build process (replace `pypi-metadata-uogykq`, `packages-internal.example.co
    
 ```
 $ gcloud builds submit \
-      --substitutions=_META_DATA_BUCKET="pypi-metadata-uogykq",_STATIC_BUCKET="packages-internal.example.com",_DOMAIN="packages.example.com" \
-      --config builder/cloudbuild.yaml \
+      --substitutions='_META_DATA_BUCKET="pypi-metadata-uogykq",_STATIC_BUCKET="packages-internal.example.com",_DOMAIN="packages.example.com"' \
+      --config='builder/cloudbuild.yaml' \
       --no-source \
-      --project=YOUR_PROJECT_ID
+      --project='YOUR_PROJECT_ID'
 ```
 
 
