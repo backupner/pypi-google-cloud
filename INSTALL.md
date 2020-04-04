@@ -44,7 +44,7 @@ $ gcloud projects add-iam-policy-binding \
 
 ### Build images for `Builder` process and `Proxy` service
 
-Build container image for `Builder` service:
+Build container image for `Builder` process:
 
 ```
 $ gcloud builds submit \
@@ -64,32 +64,70 @@ $ gcloud builds submit \
 
 ### Create new `Storage` buckets.
 
-You need create 3 buckets (ex. `pypi-packages-iobszb` for packages store, `packages-internal.example.com` for static website and `pypi-metadata-uogykq` for metadata store), 
-thus repeat the steps below three times (replace `YOUR_BUCKET_NAME` to your real bucket name).
+You need create 3 buckets (ex. `pypi-packages-iobszb` for packages store, `pypi-static-ioM6ch` for static website and `pypi-meta-uogykq` for meta data store).
+
+You MUST choose globally unique bucket names. You MAY use results of this command as bucket name unique suffixes:
 
 ```
-$ gsutil mb -b 'on' -c 'Standard' -l 'EU' -p 'YOUR_PROJECT_ID' 'gs://YOUR_BUCKET_NAME'
+$ pwgen 6 3
+```
+
+Replace `YOUR_PACKAGES_BUCKET_NAME`, `YOUR_STATIC_BUCKET_NAME`, and `YOUR_META_DATA_BUCKET_NAME` in code below to your bucket names.
+
+```
+$ gsutil mb \
+      -b 'on' \
+      -c 'Standard' \
+      -l 'EU' \
+      -p 'YOUR_PROJECT_ID' \
+      'gs://YOUR_PACKAGES_BUCKET_NAME'
 ```
 ```
-$ gsutil label ch -l 'app:pypi' 'gs://YOUR_BUCKET_NAME'
+$ gsutil mb \
+      -b 'on' \
+      -c 'Standard' \
+      -l 'EU' \
+      -p 'YOUR_PROJECT_ID' \
+      'gs://YOUR_STATIC_BUCKET_NAME'
+```
+```
+$ gsutil mb \
+      -b 'on' \
+      -c 'Standard' \
+      -l 'EU' \
+      -p 'YOUR_PROJECT_ID' \
+      'gs://YOUR_META_DATA_BUCKET_NAME'
+```
+```
+$ gsutil label ch -l 'app:pypi' 'gs://YOUR_PACKAGES_BUCKET_NAME'
+```
+```
+$ gsutil label ch -l 'app:pypi' 'gs://YOUR_STATIC_BUCKET_NAME'
+```
+```
+$ gsutil label ch -l 'app:pypi' 'gs://YOUR_META_DATA_BUCKET_NAME'
 ```
 
 Feel free to adapt this guide for your needs. You may want to change location, for example, to `US` (don't forget to use project search and make related changes in `cloudbuild.yaml` files).  
 
 #### Grant role
 
-Grant `Storage Legacy Bucket Reader` and `Storage Legacy Object Reader` roles to packages and meta data buckets (2 of 3 your buckets):
+Grant `Storage Legacy Bucket Reader` and `Storage Legacy Object Reader` roles to `pypi-proxy` service account for packages and meta data buckets:
 ```
 $ gsutil iam ch \
       'serviceAccount:pypi-proxy@YOUR_PROJECT_ID.iam.gserviceaccount.com:legacyBucketReader,legacyObjectReader' \
-      'gs://YOUR_BUCKET_NAME'
+      'gs://YOUR_PACKAGES_BUCKET_NAME'
+```
+```
+$ gsutil iam ch \
+      'serviceAccount:pypi-proxy@YOUR_PROJECT_ID.iam.gserviceaccount.com:legacyBucketReader,legacyObjectReader' \
+      'gs://YOUR_META_DATA_BUCKET_NAME'
 ```
 
-Replace `YOUR_STATIC_BUCKET_NAME`, `YOUR_PACKAGES_BUCKET_NAME` in code below to your bucket names.
 
 ### Create new secret
 
-Create new secret with generated random token:
+Create new secret with generated random token (you MAY generate several tokens and separate them by spaces):
 
 ```
 $ pwgen 172 1 | gcloud secrets create \
@@ -179,6 +217,8 @@ packages CNAME ghs.googlehosted.com.
 ```
 
 You can use `https://packages.example.com` instead of `https://pypi-gcs-proxy-xoeq6xeb4q-ew.a.run.app` now.
+
+Installation complete. Just add private repository to your `pyproject.toml` and use `poetry` (or `pip`) as usual. Read more about private repositories in [poetry docs](https://python-poetry.org/docs/repositories/#using-a-private-repository) if you need additional help...
 
 Automatic Setup
 ---------------
