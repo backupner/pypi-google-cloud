@@ -28,7 +28,7 @@ Preparation
        --format='value(project_number)'
    ```
 
-   Now grant role `Service Account Admin` role to your `Deployment Manager` project service account:
+   Now grant `Service Account Admin` role to your `Deployment Manager` project service account:
 
    Replace `YOUR_PROJECT_NUMBER` in code below to your real Cloud project number.
 
