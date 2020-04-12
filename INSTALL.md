@@ -20,7 +20,7 @@ Preparation
 
    First, get your project number:
 
-   Replace `YOUR_PROJECT_ID` in code below to get your real Cloud project number.
+   Replace `YOUR_PROJECT_ID` in code below to your real Cloud project id.
 
    ```sh
    gcloud projects describe \
