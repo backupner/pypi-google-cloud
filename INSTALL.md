@@ -22,7 +22,7 @@ Preparation
 7. Prepare `Deployment Manager` (DM).
 
    Grant `Service Account Admin` and `Storage Admin` roles to `Deployment Manager`'s project level service account.
-   Grant `Secret Manager Admin` role to `Cloud Build`'s project level service account.
+   Grant `Secret Manager Admin`, `Cloud Run Admin` and `Service Account User` roles to `Cloud Build`'s project level service account.
 
    ```sh
    bash ./install/grant_permissions
