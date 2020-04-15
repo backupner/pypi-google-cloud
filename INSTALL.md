@@ -46,17 +46,6 @@ gcloud deployment-manager deployments create \
 [Sorry, our installation script is incomplete right now that's why you need manually execute several commands below... We will fix it soon]
 
 
-### Upload image for `Proxy` service to registry
-
-Run process:
-
-```
-$ gcloud builds submit \
-      --config='proxy/cloudbuild.yaml' \
-      --no-source \
-      --project='YOUR_PROJECT_ID'
-```
-
 ### Run `Proxy` service
 
 Create `Proxy` service:
