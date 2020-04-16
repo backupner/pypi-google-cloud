@@ -68,3 +68,21 @@ packages CNAME ghs.googlehosted.com.
 You can use `https://packages.example.com` instead of `https://pypi-gcs-proxy-xoeq6xeb4q-ew.a.run.app` now.
 
 Installation complete. Just add private repository to your `pyproject.toml` and use `poetry` (or `pip`) as usual. Read more about private repositories in [poetry docs](https://python-poetry.org/docs/repositories/#using-a-private-repository) if you need additional help...
+
+Uninstall
+---------
+
+- (Recommended) Just delete your private PyPi project. 
+
+  ```sh
+  gcloud projects delete 'YOUR_PROJECT_ID'
+  ```
+- (Alternative) If you use shared project run this command:
+
+  ```sh
+  gcloud deployment-manager deployments delete \
+      'pypi' \
+      --project='YOUR_PROJECT_ID'
+  ```
+
+  You should also check assigned roles for `YOUR_PROJECT_NUMBER@cloudservices.gserviceaccount.com` and `YOUR_PROJECT_NUMBER@cloudbuild.gserviceaccount.com` service accounts.
