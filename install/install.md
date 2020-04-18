@@ -59,8 +59,8 @@ You can use your domain now.
 Open your billing account page and click to `Budgets & Alerts` menu button. After that click to `CREATE BUDGET` button and follow instructions.
 
 
-Complete
---------
+Congratulations
+---------------
 
 Installation complete. 
 
